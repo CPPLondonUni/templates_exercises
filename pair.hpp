@@ -2,6 +2,7 @@
 #ifndef PAIR_HPP_INCLUDED
 #define PAIR_HPP_INCLUDED
 
+#include <array>
 #include <iostream>
 
 template <typename T, typename U>
@@ -48,6 +49,28 @@ const U& Pair<T, U>::get_second() const
 {
     return second;
 };
+
+// Full specialisation for Pair<int, int>
+
+template <>
+class Pair<int, int> {
+public:
+    Pair(int i, int j)
+    {
+        members[0] = i;
+        members[1] = j;
+    }
+
+    int& get_first() { return members[0]; }
+    int& get_second() { return members[1]; }
+
+    int get_first() const { return members[0]; }
+    int get_second() const { return members[1]; }
+
+private:
+    std::array<int, 2> members;
+};
+
 
 template <typename T, typename U>
 void print_pair(const Pair<T, U>& p)
