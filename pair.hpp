@@ -71,6 +71,27 @@ private:
     std::array<int, 2> members;
 };
 
+// Partial specialisation for Pair<T, T>
+
+template <typename T>
+class Pair<T, T> {
+public:
+    Pair(const T& i, const T& j)
+    {
+        members[0] = i;
+        members[1] = j;
+    }
+
+    T& get_first() { return members[0]; }
+    T& get_second() { return members[1]; }
+
+    const T& get_first() const { return members[0]; }
+    const T& get_second() const { return members[1]; }
+
+private:
+    std::array<T, 2> members;
+};
+
 
 template <typename T, typename U>
 void print_pair(const Pair<T, U>& p)
