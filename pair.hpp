@@ -4,24 +4,26 @@
 
 #include <iostream>
 
+template <typename T, typename U>
 class Pair {
 public:
-    Pair(const int& t, const int& u)
+    Pair(const T& t, const U& u)
         : first(t), second(u)
     {}
 
-    int& get_first() { return first; }
-    int& get_second() { return second; }
+    T& get_first() { return first; }
+    U& get_second() { return second; }
 
-    const int& get_first() const { return first; }
-    const int& get_second() const { return second; }
+    const T& get_first() const { return first; }
+    const U& get_second() const { return second; }
 
 private:
-    int first;
-    int second;
+    T first;
+    U second;
 };
 
-void print_pair(const Pair& p)
+template <typename T, typename U>
+void print_pair(const Pair<T, U>& p)
 {
     std::cout << '(' << p.get_first() << ", " << p.get_second() << ")\n";
 }
